@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Все статусы машин</title>
+</head>
+<body>
+<table th:each="status : ${statusesCars}">
+    <td th:text="${status.id}"></td>
+    <td th:text="${status.status}"></td>
+</table>
+</body>
+</html>

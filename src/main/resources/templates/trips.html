@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Автомобили</title>
+
+</head>
+<body>
+<table>
+    <td width="15" align="center"><b>Id</b></td>
+    <td width="75" align="center"><b>Откуда</b></td>
+    <td width="150" align="center"><b>Куда</b></td>
+    <td width="80" align="center"><b>Расстояние</b></td>
+    <td width="110" align="center"><b>Дата старта</b></td>
+    <td width="65" align="center"><b>Время старта</b></td>
+    <td width="60" align="center"><b>Расход топлива</b></td>
+    <td width="100" align="center"><b>Диспетчер</b></td>
+    <td width="150" align="center"><b>Водитель</b></td>
+    <td width="140" align="center"><b>Автомобиль</b></td>
+    <td width="150" align="center"><b>Груз</b></td>
+    <td width="110" align="center"><b>Дата окончания</b></td>
+    <td width="70" align="center"><b>Время окончания</b></td>
+</table>
+<table th:unless="${trips == null}"  th:each="trip : ${trips}">
+    <td width="15" align="center" th:text="${trip.id}"></td>
+    <td width="75" align="center" th:text="${trip.startPoint}"></td>
+    <td width="150" align="center" th:text="${trip.endPoint}"></td>
+    <td width="80" align="center" th:text="${trip.distance}"></td>
+    <td width="110" align="center" th:text="${trip.startDate}"></td>
+    <td width="65" align="center" th:text="${trip.startTime}"></td>
+    <td width="60" align="center" th:text="${trip.fuelUsed}"></td>
+    <td width="100" align="center" th:text="${trip.idDispatcher}"></td>
+    <td width="150" align="center" th:text="${trip.idDriver}"></td>
+    <td width="140" align="center" th:text="${trip.idCar}"></td>
+    <td width="150" align="center" th:text="${trip.idCargo}"></td>
+    <td width="110" align="center" th:text="${trip.endDate}"></td>
+    <td width="70" align="center" th:text="${trip.endTime}"></td>
+
+</table>
+<!--<div th:unless="${carWithStatus == null}" >
+<table th:each="car1: ${carWithStatus.cars}">
+   <td width="15" align="center" th:text="${car1.id}"></td>
+   <td width="60" align="center" th:text="${car1.brand}"></td>
+   <td width="75" align="center" th:text="${car1.number}"></td>
+   <td width="45" align="center" th:text="${car1.mileage}"></td>
+   <td width="280" th:text="${car1.idStatus}"></td>
+</table>
+</div>-->
+</body>
+</html>

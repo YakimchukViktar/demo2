@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Автомобили</title>
+</head>
+<body>
+<table th:unless="${cars == null}" th:each="car : ${cars}">
+    <td width="15" align="center" th:text="${car.id}"></td>
+    <td width="60" align="center" th:text="${car.brand}"></td>
+    <td width="75" align="center" th:text="${car.number}"></td>
+    <td width="45" align="center" th:text="${car.mileage}"></td>
+    <td width="280" th:text="${car.idStatus}"></td>
+</table>
+<div th:unless="${carWithStatus == null}" >
+<table th:each="car1: ${carWithStatus.cars}">
+   <td width="15" align="center" th:text="${car1.id}"></td>
+   <td width="60" align="center" th:text="${car1.brand}"></td>
+   <td width="75" align="center" th:text="${car1.number}"></td>
+   <td width="45" align="center" th:text="${car1.mileage}"></td>
+   <td width="280" th:text="${car1.idStatus}"></td>
+</table>
+</div>
+</body>
+</html>

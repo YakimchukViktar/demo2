@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Все водители</title>
+</head>
+<body>
+<table th:each="driver : ${drivers}">
+    <td th:text="${driver.id}"></td>
+    <td th:text="${driver.first_name}"></td>
+    <td th:text="${driver.second_name}"></td>
+    <td th:text="${driver.last_name}"></td>
+    <td th:text="${driver.isInTrip}"></td>
+    <td th:text="${driver.isActive}"></td>
+   </table>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Все диспетчеры</title>
+</head>
+<body>
+<table th:each="dispatcher : ${dispatchers}">
+<td th:text="${dispatcher.id}"></td>
+<td th:text="${dispatcher.first_name}"></td>
+<td th:text="${dispatcher.second_name}"></td>
+<td th:text="${dispatcher.last_name}"></td>
+</table>
+</body>
+</html>
