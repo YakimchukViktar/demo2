@@ -35,8 +35,8 @@ public class Controller {
     @GetMapping ("/second")
     public String getSecondPage (@RequestParam(value = "name", required = false) String name,
                                  @RequestParam(value = "age", required = false) String age){
-        System.out.println(name);
-        System.out.println(age);
+        //System.out.println(name);
+        //System.out.println(age);
         return "secondPage";
     }
 }

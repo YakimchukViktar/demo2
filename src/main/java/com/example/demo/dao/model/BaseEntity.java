@@ -20,4 +20,5 @@ public abstract class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
 }

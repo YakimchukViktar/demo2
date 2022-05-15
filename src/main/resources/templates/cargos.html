@@ -2,24 +2,32 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Автомобили</title>
+    <title th:utext="#{cargos}">Cargos</title>
 </head>
 <body>
+<table>
+    <td width="15" align="center"><b>Id</b></td>
+    <td width="95" align="center" th:utext="#{invoiceNumber}"><b>Invoice number</b></td>
+    <td width="140" align="center" th:utext="#{nameCargo}"><b>Name</b></td>
+    <td width="60" align="center" th:utext="#{price}"><b>Price</b></td>
+    <td width="80" align="center" th:utext="#{insuranceNumber}"><b>Insurance number</b></td>
+
+</table>
 <table th:unless="${cargos == null}"  th:each="cargo : ${cargos}">
     <td width="15" align="center" th:text="${cargo.id}"></td>
-    <td width="45" align="left" th:text="${cargo.invoiceNumber}"></td>
-    <td width="115" align="left" th:text="${cargo.name}"></td>
-    <td width="65" align="left" th:text="${cargo.price}"></td>
-    <td width="65" align="left" th:text="${cargo.insuranceNumber}"></td>
+    <td width="95" align="center" th:text="${cargo.invoiceNumber}"></td>
+    <td width="140" align="center" th:text="${cargo.name}"></td>
+    <td width="60" align="center" th:text="${cargo.price}"></td>
+    <td width="80" align="center" th:text="${cargo.insuranceNumber}"></td>
 </table>
-<!--<div th:unless="${carWithStatus == null}" >
-<table th:each="car1: ${carWithStatus.cars}">
-   <td width="15" align="center" th:text="${car1.id}"></td>
-   <td width="60" align="center" th:text="${car1.brand}"></td>
-   <td width="75" align="center" th:text="${car1.number}"></td>
-   <td width="45" align="center" th:text="${car1.mileage}"></td>
-   <td width="280" th:text="${car1.idStatus}"></td>
-</table>
-</div>-->
+<div th:unless="${cargo == null}" >
+    <table>
+        <td width="15" align="center" th:text="${cargo.id}"></td>
+        <td width="95" align="center" th:text="${cargo.invoiceNumber}"></td>
+        <td width="140" align="center" th:text="${cargo.name}"></td>
+        <td width="60" align="center" th:text="${cargo.price}"></td>
+        <td width="80" align="center" th:text="${cargo.insuranceNumber}"></td>
+    </table>
+</div>
 </body>
 </html>
