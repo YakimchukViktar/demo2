@@ -5,9 +5,41 @@
     <title>Все статусы машин</title>
 </head>
 <body>
-<table th:each="status : ${statusesCars}">
-    <td th:text="${status.id}"></td>
-    <td th:text="${status.status}"></td>
+<style>
+    .even{background-color: #FFFACD}
+    .odd{background-color: #7FFFD4}
+</style>
+<div >
+    <form align="center" th:action="@{/statusCar/all}">
+        <input type="radio" name="lang" id="english" value="en_En">
+        <label for="english">English</label>
+        <input type="radio" name="lang" id="russian" value="ru_Ru">
+        <label for="russian">Русский</label>
+        <button th:utext="#{selectLanguage}">Language</button>
+    </form>
+    <hr></hr>
+</div>
+
+<table>
+    <td width="15" align="center"><b>Id</b></td>
+    <td width="280" align="center" th:utext="#{idStatus}"><b>Car Status</b></td>
+
+</table>
+
+<table th:each="status : ${statusesCars}" th:class="${statusStat.even}?'even':'odd'">
+    <td width="15" align="center" th:text="${status.id}"></td>
+    <td width="280" align="center" th:text="${status.status}"></td>
+</table>
+
+<table align="center" cellspacing="20">
+    <tr >
+        <td ><a href="/trips/all" th:utext="#{trips}">Trips</a></td>
+        <td ><a href="/drivers/all" th:utext="#{drivers}">Drivers</a></td>
+        <td ><a href="/dispatchers/all" th:utext="#{dispatchers}">Dispatchers</a></td>
+        <td ><a href="/cars/all" th:utext="#{cars}">Cars</a></td>
+        <td ><a href="/cargos/all" th:utext="#{cargos}">Cargos</a></td>
+        <td ><a href="/statusCar/all" th:utext="#{carStatuses}">Car statuses</a></td>
+    </tr>
 </table>
 </body>
 </html>

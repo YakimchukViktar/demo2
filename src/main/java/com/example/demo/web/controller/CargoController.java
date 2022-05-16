@@ -33,4 +33,5 @@ public class CargoController {
         model.addAttribute("cargo", cargo);
         return "cargos";
     }
+
 }
