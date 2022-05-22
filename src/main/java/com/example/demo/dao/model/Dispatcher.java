@@ -28,4 +28,12 @@ public class Dispatcher extends BaseEntity{
     public String toString() {
         return last_name + " " + first_name;
     }
+
+    @Column(unique = true)
+    private String username;
+
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 }

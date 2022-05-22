@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface DispatcherRepository extends CrudRepository<Dispatcher,Integer> {
    List<Dispatcher> findAll();
+   Dispatcher findDispatcherByUsername (String username);
 }

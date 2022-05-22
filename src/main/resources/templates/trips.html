@@ -29,40 +29,40 @@
     <p th:utext="#{programname}">Program for cargo transportation management</p>
 </div>
 
-<div class="container-fluid p-2 text-center">
+<div class="container-xxl p-2 text-center">
     <div class="row row-cols-auto justify-content-md-center">
         <table>
             <tr>
-                <th width="15" align="center"><b>Id</b></th>
-                <th width="75" align="center" th:utext="#{startPoint}"><b>From</b></th>
-                <th width="150" align="center" th:utext="#{endPoint}"><b>Where</b></th>
-                <th width="80" align="center" th:utext="#{distance}"><b>Distance</b></th>
-                <th width="110" align="center" th:utext="#{startDate}"><b>Start date</b></th>
-                <th width="65" align="center" th:utext="#{startTime}"><b>Start time</b></th>
-                <th width="60" align="center" th:utext="#{fuelUsed}"><b>Fuel used</b></th>
-                <th width="100" align="center" th:utext="#{idDispatcher}"><b>Dispatcher</b></th>
-                <th width="150" align="center" th:utext="#{idDriver}"><b>Driver</b></th>
-                <th width="140" align="center" th:utext="#{idCar}"><b>Car</b></th>
-                <th width="150" align="center" th:utext="#{idCargo}"><b>Cargo</b></th>
-                <th width="110" align="center" th:utext="#{endDate}"><b>End date</b></th>
-                <th width="70" align="center" th:utext="#{endTime}"><b>End time</b></th>
+                <th><b>Id</b></th>
+                <th th:utext="#{startPoint}">From</th>
+                <th th:utext="#{endPoint}">Where</th>
+                <th th:utext="#{distance}">Distance</th>
+                <th th:utext="#{startDate}">Start date</th>
+                <th th:utext="#{startTime}">Start time</th>
+                <th th:utext="#{fuelUsed}">Fuel used</th>
+                <th th:utext="#{idDispatcher}">Dispatcher</th>
+                <th th:utext="#{idDriver}">Driver</th>
+                <th th:utext="#{idCar}">Car</th>
+                <th th:utext="#{idCargo}">Cargo</th>
+                <th th:utext="#{endDate}">End date</th>
+                <th th:utext="#{endTime}">End time</th>
             </tr>
 
             <tr th:unless="${trips == null}" th:each="trip : ${trips}" th:class="${tripStat.even}?'even':'odd'">
-                <td width="15" align="center" th:text="${trip.id}"></td>
-                <td width="75" align="center" th:text="${trip.startPoint}"></td>
-                <td width="150" align="center" th:text="${trip.endPoint}"></td>
-                <td width="80" align="center" th:text="${trip.distance}"></td>
-                <td width="110" align="center" th:text="${trip.startDate}"></td>
-                <td width="65" align="center" th:text="${trip.startTime}"></td>
-                <td width="60" align="center" th:text="${trip.fuelUsed}"></td>
-                <td width="100" align="center" th:text="${trip.idDispatcher}"></td>
-                <td width="150" align="center" th:text="${trip.idDriver}"></td>
-                <td width="140" align="center" th:text="${trip.idCar}"></td>
-                <td width="150" align="center"><a th:href="@{/cargo(id=${trip.IdCargo.getId})}"
+                <td align="center" th:text="${trip.id}"></td>
+                <td align="center" th:text="${trip.startPoint}"></td>
+                <td align="center" th:text="${trip.endPoint}"></td>
+                <td align="center" th:text="${trip.distance}"></td>
+                <td align="center" th:text="${trip.startDate}"></td>
+                <td align="center" th:text="${trip.startTime}"></td>
+                <td align="center" th:text="${trip.fuelUsed}"></td>
+                <td align="center" th:text="${trip.idDispatcher}"></td>
+                <td align="center" th:text="${trip.idDriver}"></td>
+                <td align="center" th:text="${trip.idCar}"></td>
+                <td align="center"><a th:href="@{/cargo(id=${trip.IdCargo.getId})}"
                                                   th:text="${trip.idCargo}"> </a></td>
-                <td width="110" align="center" th:text="${trip.endDate}"></td>
-                <td width="70" align="center" th:text="${trip.endTime}"></td>
+                <td align="center" th:text="${trip.endDate}"></td>
+                <td align="center" th:text="${trip.endTime}"></td>
             </tr>
         </table>
     </div>
