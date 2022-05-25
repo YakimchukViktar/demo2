@@ -24,6 +24,11 @@
 </form>
 </div>
 
+<form method="POST" th:action="@{/logout}">
+    <input type="submit" value="Logout"/>
+</form>
+
+
 <div class="container-xxl p-3 bg-primary text-white text-center">
     <h1>Jarex Company (or another name)</h1>
     <p th:utext="#{programname}">Program for cargo transportation management</p>

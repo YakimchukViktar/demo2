@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -16,10 +17,12 @@ import java.util.Set;
 @Service
 public class DispatcherServiceImpl implements DispatcherService{
 private final DispatcherRepository dispatcherRepository;
+private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public DispatcherServiceImpl(DispatcherRepository dispatcherRepository) {
+    public DispatcherServiceImpl(DispatcherRepository dispatcherRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.dispatcherRepository = dispatcherRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @Override
@@ -30,6 +33,12 @@ private final DispatcherRepository dispatcherRepository;
     @Override
     public Dispatcher findDispatcherByUsername(String username) {
         return dispatcherRepository.findDispatcherByUsername(username);
+    }
+
+    @Override
+    public void save(Dispatcher dispatcher) {
+    dispatcher.setPassword(bCryptPasswordEncoder.encode(dispatcher.getPassword()));
+    dispatcherRepository.save(dispatcher);
     }
 
     @Override
