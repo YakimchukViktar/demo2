@@ -37,7 +37,7 @@ public class RegistrationController {
         if (errors.hasErrors()) {
             return "registerDispatcher";
         } else {
-            dispatcher.setRole(Role.ROLE_USER);
+            dispatcher.setRole(Role.ROLE_DISPATCHER);
             dispatcherService.save(dispatcher);
             return "/login";
         }

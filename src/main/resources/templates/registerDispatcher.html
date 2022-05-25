@@ -14,7 +14,7 @@
 <form th:action="@{/dispatcherRegister}" method="post" th:object="${dispatcher}">
     <div class="container mt-5">
         <div class="ml-5 form-group row">
-            <label class="col-sm-4 col-form-label" for="username">Имя пользователя</label>
+            <label class="col-sm-4 col-form-label" for="username" th:utext="#{login}">Login</label>
             <div class="col-sm-5">
                 <input required type="text" class="form-control" th:field="*{username}" id="username">
                 <div class="error">
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="ml-5 form-group row">
-            <label class="col-sm-4 col-form-label" for="password">Пароль</label>
+            <label class="col-sm-4 col-form-label" for="password" th:utext="#{password}">Password</label>
             <div class="col-sm-5">
                 <input required type="password" class="form-control" th:field="*{password}" id="password">
                 <div class="error">
@@ -32,16 +32,7 @@
             </div>
         </div>
         <div class="ml-5 form-group row">
-            <label class="col-sm-4 col-form-label" for="last_name">Фамилия</label>
-            <div class="col-sm-5">
-                <input required type="text" class="form-control" th:field="*{last_name}" id="last_name">
-                <div class="error">
-                    <p th:each="err : ${#fields.errors('last_name')}" class="alert-danger" th:text="#{${err}}"></p>
-                </div>
-            </div>
-        </div>
-        <div class="ml-5 form-group row">
-            <label class="col-sm-4 col-form-label" for="first_name">Имя</label>
+            <label class="col-sm-4 col-form-label" for="first_name" th:utext="#{name}">Name</label>
             <div class="col-sm-5">
                 <input required type="text" class="form-control" th:field="*{first_name}" id="first_name">
                 <div class="error">
@@ -49,8 +40,26 @@
                 </div>
             </div>
         </div>
+        <div class="ml-5 form-group row">
+            <label class="col-sm-4 col-form-label" for="last_name" th:utext="#{second_name}">Second name</label>
+            <div class="col-sm-5">
+                <input required type="text" class="form-control" th:field="*{second_name}" id="second_name">
+                <div class="error">
+                    <p th:each="err : ${#fields.errors('last_name')}" class="alert-danger" th:text="#{${err}}"></p>
+                </div>
+            </div>
+        </div>
+        <div class="ml-5 form-group row">
+            <label class="col-sm-4 col-form-label" for="last_name" th:utext="#{last_name}">Last name</label>
+            <div class="col-sm-5">
+                <input required type="text" class="form-control" th:field="*{last_name}" id="last_name">
+                <div class="error">
+                    <p th:each="err : ${#fields.errors('last_name')}" class="alert-danger" th:text="#{${err}}"></p>
+                </div>
+            </div>
+        </div>
         <div class="form-group mt-2 text-center">
-            <input type="submit" class="btn btn-primary" value="Зарегистрироваться">
+            <input type="submit" class="btn btn-primary" value="Register">
         </div>
     </div>
 </form>

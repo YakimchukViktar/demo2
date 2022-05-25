@@ -7,7 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 @Getter
 @AllArgsConstructor
 public enum Role implements GrantedAuthority {
-    ROLE_USER("dispatcher"),
+    ROLE_DISPATCHER("dispatcher"),
     ROLE_ADMIN("admin"),
     ROLE_DRIVER("driver");
 
