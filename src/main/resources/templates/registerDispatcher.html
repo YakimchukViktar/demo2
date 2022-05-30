@@ -11,6 +11,9 @@
 </head>
 <body>
 
+<div th:replace="trips :: navbar"></div>
+<div th:insert="trips :: header"></div>
+
 <form th:action="@{/dispatcherRegister}" method="post" th:object="${dispatcher}">
     <div class="container mt-5">
         <div class="ml-5 form-group row">
@@ -22,7 +25,7 @@
                 </div>
             </div>
         </div>
-        <div class="ml-5 form-group row">
+        <div class="ml-5 form-group row mt-2">
             <label class="col-sm-4 col-form-label" for="password" th:utext="#{password}">Password</label>
             <div class="col-sm-5">
                 <input required type="password" class="form-control" th:field="*{password}" id="password">
@@ -31,7 +34,7 @@
                 </div>
             </div>
         </div>
-        <div class="ml-5 form-group row">
+        <div class="ml-5 form-group row mt-2">
             <label class="col-sm-4 col-form-label" for="first_name" th:utext="#{name}">Name</label>
             <div class="col-sm-5">
                 <input required type="text" class="form-control" th:field="*{first_name}" id="first_name">
@@ -40,7 +43,7 @@
                 </div>
             </div>
         </div>
-        <div class="ml-5 form-group row">
+        <div class="ml-5 form-group row mt-2">
             <label class="col-sm-4 col-form-label" for="last_name" th:utext="#{second_name}">Second name</label>
             <div class="col-sm-5">
                 <input required type="text" class="form-control" th:field="*{second_name}" id="second_name">
@@ -49,7 +52,7 @@
                 </div>
             </div>
         </div>
-        <div class="ml-5 form-group row">
+        <div class="ml-5 form-group row mt-2">
             <label class="col-sm-4 col-form-label" for="last_name" th:utext="#{last_name}">Last name</label>
             <div class="col-sm-5">
                 <input required type="text" class="form-control" th:field="*{last_name}" id="last_name">

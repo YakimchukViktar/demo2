@@ -18,7 +18,7 @@ public class Dispatcher extends BaseEntity{
     @Size(min = 2, max = 20, message = "errors.user.lastName")
     private String last_name;
 
-    @Column (name = "second_name", length = 45)
+    @Column (name = "second_name", length = 45, nullable = true)
     private String second_name;
 
     @Column (name = "first_name", nullable = false, length = 45)
