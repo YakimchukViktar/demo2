@@ -14,7 +14,7 @@
 <div th:replace="trips :: navbar"></div>
 <div th:insert="trips :: header"></div>
 
-<form th:action="@{/dispatcherRegister}" method="post" th:object="${dispatcher}">
+<form th:action="@{/driverRegister}" method="post" th:object="${driver}">
     <div class="container mt-5">
         <div class="ml-5 form-group row">
             <label class="col-sm-4 col-form-label" for="username" th:utext="#{login}">Login</label>
@@ -58,6 +58,24 @@
                 <input required type="text" class="form-control" th:field="*{last_name}" id="last_name">
                 <div class="error">
                     <p th:each="err : ${#fields.errors('last_name')}" class="alert-danger" th:text="#{${err}}"></p>
+                </div>
+            </div>
+        </div>
+        <div class="ml-5 form-group row mt-2">
+            <label class="col-sm-4 col-form-label" for="isInTrip" th:utext="#{isInTrip}">Is in trip?</label>
+            <div class="col-sm-5">
+                <input required type="text" class="form-control" th:field="*{isInTrip}" id="isInTrip">
+                <div class="error">
+                    <p th:each="err : ${#fields.errors('isInTrip')}" class="alert-danger" th:text="#{${err}}"></p>
+                </div>
+            </div>
+        </div>
+        <div class="ml-5 form-group row mt-2">
+            <label class="col-sm-4 col-form-label" for="isActive" th:utext="#{isActive}">Is in trip?</label>
+            <div class="col-sm-5">
+                <input required type="text" class="form-control" th:field="*{isActive}" id="isActive">
+                <div class="error">
+                    <p th:each="err : ${#fields.errors('isActive')}" class="alert-danger" th:text="#{${err}}"></p>
                 </div>
             </div>
         </div>

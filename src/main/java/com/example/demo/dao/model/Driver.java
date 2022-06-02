@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -18,6 +19,7 @@ import java.util.List;
 public class Driver extends BaseEntity{
 
     @Column(name = "last_name", length = 45, nullable = false)
+    @Size(min = 0, max = 45, message = "errors.user.lastName")
     private String last_name;
 
     @Column(name = "second_name", length = 45)
@@ -27,9 +29,11 @@ public class Driver extends BaseEntity{
     private String first_name;
 
     @Column(name = "is_in_trip", nullable = false)
+//    @Pattern (regexp = "^[0-1]$", message = "errors.user.isInTrip")
     private int isInTrip;
 
     @Column(name = "is_active", nullable = false)
+//    @Pattern (regexp = "^[0-1]$", message = "errors.user.isInTrip")
     private int isActive;
 
     @Column(unique = true, nullable = false)
