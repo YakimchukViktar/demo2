@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +17,7 @@
 
 <nav th:fragment="navbar"  class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/login" th:utext="#{enter}">Enter</a>
+        <a class="navbar-brand" href="/login" sec:authorize="!isAuthenticated()" th:utext="#{enter}">Enter</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -28,16 +29,16 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/drivers/all" th:utext="#{drivers}">Drivers</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_DISPATCHER','ROLE_ADMIN')">
                     <a class="nav-link" href="/dispatchers/all" th:utext="#{dispatchers}">Dispatchers</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_DISPATCHER','ROLE_ADMIN')">
                     <a class="nav-link" href="/cars/all" th:utext="#{cars}">Cars</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_DISPATCHER','ROLE_ADMIN')">
                     <a class="nav-link" href="/cargos/all" th:utext="#{cargos}">Cargos</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_DISPATCHER','ROLE_ADMIN')">
                     <a class="nav-link" href="/statusCar/all" th:utext="#{carStatuses}">Car statuses</a>
                 </li>
 
@@ -54,8 +55,8 @@
             </ul>
         </div>
         <form>
-            <a class="btn btn-primary" th:if="${#locale.toString() == 'ru_RU'}" href="?lang=en_En">English</a>
-            <a class="btn btn-primary" th:if="${#locale.toString() == 'en_EN'}" href="?lang=ru_RU">Русский</a>
+            <a class="btn btn-warning" th:if="${#locale.toString() == 'ru_RU'}" href="?lang=en_En">English</a>
+            <a class="btn btn-warning" th:if="${#locale.toString() == 'en_EN'}" href="?lang=ru_RU">Русский</a>
         </form>
         <form type="submit" method="POST" th:action="@{/logout}">
             <button class="btn btn-danger" th:utext="#{exit}">Exit</button>
@@ -63,7 +64,7 @@
     </div>
 </nav>
 
-<div th:fragment="header" class="container-xxl p-3 bg-primary text-white text-center">
+<div th:fragment="header" class="container-xxl p-3 pt-1 pb-1 bg-primary text-white text-center">
     <h1>Jarex Company (or another name)</h1>
     <p th:utext="#{programname}">Program for cargo transportation management</p>
 </div>
@@ -99,7 +100,7 @@
                 <td align="center" th:text="${trip.idDispatcher}"></td>
                 <td align="center" th:text="${trip.idDriver}"></td>
                 <td align="center" th:text="${trip.idCar}"></td>
-                <td align="center"><a th:href="@{/cargo(id=${trip.IdCargo.getId})}"
+                <td align="center" ><a th:href="@{/cargo(id=${trip.IdCargo.getId})}"
                                       th:text="${trip.idCargo}"> </a></td>
                 <td align="center" th:text="${trip.endDate}"></td>
                 <td align="center" th:text="${trip.endTime}"></td>

@@ -1,24 +1,55 @@
 package com.example.demo.service;
 
 import com.example.demo.dao.model.Driver;
+import com.example.demo.dao.model.Role;
 import com.example.demo.dao.repository.DriverRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 @Service
 public class DriverServiceImpl implements DriverService{
 
     private final DriverRepository driverRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public DriverServiceImpl(DriverRepository driverRepository) {
+    public DriverServiceImpl(DriverRepository driverRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.driverRepository = driverRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @Override
     public List<Driver> findAllDrivers() {
     return driverRepository.findAll();
+    }
 
+    @Override
+    public Driver findDriverByUsername(String username) {
+        return driverRepository.findDriverByUsername(username);
+    }
+
+    @Override
+    public void save(Driver driver) {
+        driver.setPassword(bCryptPasswordEncoder.encode(driver.getPassword()));
+        driverRepository.save(driver);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Driver driver = findDriverByUsername(username);
+        Set<Role> roles = new HashSet<>();
+        if (driver == null){
+            throw new UsernameNotFoundException("dispatcher with " + username + " doesn't exist");
+        } else System.out.println("Success");
+        roles.add(driver.getRole());
+        return new User(username, driver.getPassword(), roles);
     }
 }

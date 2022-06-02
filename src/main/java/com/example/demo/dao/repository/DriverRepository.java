@@ -8,6 +8,7 @@ import java.util.List;
 
 @Repository
 public interface DriverRepository extends CrudRepository<Driver, Integer> {
-
     List<Driver> findAll();
+    Driver findDriverByUsername (String username);
+
 }

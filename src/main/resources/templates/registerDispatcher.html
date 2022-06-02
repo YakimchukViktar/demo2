@@ -46,7 +46,7 @@
         <div class="ml-5 form-group row mt-2">
             <label class="col-sm-4 col-form-label" for="last_name" th:utext="#{second_name}">Second name</label>
             <div class="col-sm-5">
-                <input required type="text" class="form-control" th:field="*{second_name}" id="second_name">
+                <input type="text" class="form-control" th:field="*{second_name}" id="second_name">
                 <div class="error">
                     <p th:each="err : ${#fields.errors('last_name')}" class="alert-danger" th:text="#{${err}}"></p>
                 </div>
