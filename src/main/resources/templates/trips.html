@@ -100,8 +100,9 @@
                 <td align="center" th:text="${trip.idDispatcher}"></td>
                 <td align="center" th:text="${trip.idDriver}"></td>
                 <td align="center" th:text="${trip.idCar}"></td>
-                <td align="center" ><a th:href="@{/cargo(id=${trip.IdCargo.getId})}"
-                                      th:text="${trip.idCargo}"> </a></td>
+                <td align="center" sec:authorize="hasAnyAuthority('ROLE_DISPATCHER', 'ROLE_ADMIN')">
+                    <a th:href="@{/cargo(id=${trip.IdCargo.getId})}" th:text="${trip.idCargo}"> </a></td>
+                <td align="center" sec:authorize="hasAnyAuthority('ROLE_DRIVER')" th:text="${trip.idCargo}"></td>
                 <td align="center" th:text="${trip.endDate}"></td>
                 <td align="center" th:text="${trip.endTime}"></td>
             </tr>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +17,8 @@
 <div th:insert="trips :: header"></div>
 
 <div class="container p-2">
-    <a class="btn btn-success" href="/registerDriver" th:utext="#{registerDriver}">Register new driver</a>
+    <a class="btn btn-success" sec:authorize="hasAnyAuthority('ROLE_DISPATCHER','ROLE_ADMIN')"
+       href="/registerDriver" th:utext="#{registerDriver}">Register new driver</a>
 </div>
 
 <div class="container-xxl p-2 text-center">
