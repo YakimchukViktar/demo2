@@ -26,10 +26,10 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="/trips/all" th:utext="#{trips}">Trips</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_DISPATCHER','ROLE_ADMIN')">
                     <a class="nav-link" href="/drivers/all" th:utext="#{drivers}">Drivers</a>
                 </li>
-                <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_DISPATCHER','ROLE_ADMIN')">
+                <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                     <a class="nav-link" href="/dispatchers/all" th:utext="#{dispatchers}">Dispatchers</a>
                 </li>
                 <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_DISPATCHER','ROLE_ADMIN')">

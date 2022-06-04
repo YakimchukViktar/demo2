@@ -28,9 +28,10 @@ private final BCryptPasswordEncoder bCryptPasswordEncoder;
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers(  "/drivers/all", "/trips/all").hasAnyAuthority("ROLE_DISPATCHER", "ROLE_ADMIN", "ROLE_DRIVER")
-                .antMatchers("/dispatchers/all", "/statusCar/all", "/cars/all", "/cargos/all",
+                .antMatchers(  "/trips/all").hasAnyAuthority("ROLE_DISPATCHER", "ROLE_ADMIN", "ROLE_DRIVER")
+                .antMatchers("/drivers/all", "/statusCar/all", "/cars/all", "/cargos/all",
                         "/cargo", "/cars/**", "/registerDispatcher").hasAnyAuthority("ROLE_DISPATCHER", "ROLE_ADMIN")
+                .antMatchers("/dispatchers/all").hasAnyAuthority("ROLE_ADMIN")
                 .and()
                 .formLogin()
                 .and()
@@ -43,7 +44,7 @@ private final BCryptPasswordEncoder bCryptPasswordEncoder;
                 .loginProcessingUrl("/login")
                 .usernameParameter("user")
                 .passwordParameter("pass")
-                .defaultSuccessUrl("/drivers/all", true)
+                .defaultSuccessUrl("/trips/all", true)
                 .and()
                 .logout().logoutSuccessUrl("/login");
     }
