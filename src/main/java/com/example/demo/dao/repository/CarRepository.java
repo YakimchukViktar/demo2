@@ -10,4 +10,6 @@ import java.util.List;
 public interface CarRepository extends CrudRepository <Car, Integer> {
     List <Car> findAll ();
 
+
+    void deleteById(Integer id);
 }
