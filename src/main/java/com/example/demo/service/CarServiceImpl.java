@@ -32,7 +32,9 @@ public class CarServiceImpl implements CarService{
         carRepository.deleteById(id);
     }
 
-
-
+    @Override
+    public Car findCarById(Integer id) {
+        return carRepository.findById(id).orElse(null);
+    }
 
 }

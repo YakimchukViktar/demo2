@@ -12,4 +12,6 @@ public interface CarService {
 
     void deleteById(Integer id);
 
+    Car findCarById (Integer id);
+
 }

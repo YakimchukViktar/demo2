@@ -35,5 +35,16 @@ public class CarController {
         return "redirect:/cars/all";
     }
 
+    @GetMapping("/editCar/{id}")
+    public String editCar(@PathVariable("id") Integer id, Model model) {
+        Car car = carService.findCarById(id);
+        model.addAttribute("car", car);
+        return "/editCar";
+    }
 
+    @PostMapping("/editCar")
+    public String updateCar(Car car){
+        carService.save(car);
+        return "redirect:/cars/all";
+    }
 }

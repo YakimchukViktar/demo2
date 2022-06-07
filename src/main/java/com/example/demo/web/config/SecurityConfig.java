@@ -29,9 +29,9 @@ private final BCryptPasswordEncoder bCryptPasswordEncoder;
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers(  "/trips/all").hasAnyAuthority("ROLE_DISPATCHER", "ROLE_ADMIN", "ROLE_DRIVER")
-                .antMatchers("/drivers/all", "/statusCar/all", "/cars/all", "/cargos/all",
-                        "/cargo", "/cars/**", "/registerDispatcher").hasAnyAuthority("ROLE_DISPATCHER", "ROLE_ADMIN")
-                .antMatchers("/dispatchers/all").hasAnyAuthority("ROLE_ADMIN")
+                .antMatchers("/drivers/**", "/statusCar/all", "/cargos/all",
+                        "/cargo", "/cars/**").hasAnyAuthority("ROLE_DISPATCHER", "ROLE_ADMIN")
+                .antMatchers("/dispatchers/**", "/registerDispatcher").hasAnyAuthority("ROLE_ADMIN")
                 .and()
                 .formLogin()
                 .and()
