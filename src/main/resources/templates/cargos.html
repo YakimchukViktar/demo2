@@ -11,9 +11,14 @@
 <style>
     .even{background-color: #FFFACD}
     .odd{background-color: #7FFFD4}
+
 </style>
 <div th:replace="trips :: navbar"></div>
 <div th:insert="trips :: header"></div>
+
+<div class="container p-2">
+    <a class="btn btn-success" href="/addCargo" th:utext="#{addCargo}">Add new cargo</a>
+</div>
 
 <div class="container-xxl p-2 text-center">
     <div class="row row-cols-auto justify-content-md-center">
@@ -24,6 +29,8 @@
                 <th th:utext="#{nameCargo}">Name</th>
                 <th th:utext="#{price}">Price</th>
                 <th th:utext="#{insuranceNumber}">Insurance number</th>
+                <th th:utext="#{edit}">Edit</th>
+                <th th:utext="#{delete}">Delete</th>
             </tr>
 
             <tr th:unless="${cargos == null}" th:each="cargo : ${cargos}" th:class="${cargoStat.even}?'even':'odd'">
@@ -32,15 +39,18 @@
                 <td align="center" th:text="${cargo.name}"></td>
                 <td align="center" th:text="${cargo.price}"></td>
                 <td align="center" th:text="${cargo.insuranceNumber}"></td>
+                <td> <a th:href="@{/editCargo/{id}(id=${cargo.id})}" th:utext="#{edit}">Edit</a></td>
+                <td> <a th:href="@{/cargoDelete/{id}(id=${cargo.id})}" th:utext="#{delete}">Delete</a></td>
+            </tr>
 
-            <tr th:unless="${cargo == null}" class="even">
+            <tr th:if="${cargo == null}" class="even">
                 <td align="center" th:text="${cargo.id}"></td>
                 <td align="center" th:text="${cargo.invoiceNumber}"></td>
                 <td align="center" th:text="${cargo.name}"></td>
                 <td align="center" th:text="${cargo.price}"></td>
                 <td align="center" th:text="${cargo.insuranceNumber}"></td>
             </tr>
-            </tr>
+
         </table>
     </div>
 </div>

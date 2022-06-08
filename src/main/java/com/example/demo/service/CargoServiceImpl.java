@@ -20,4 +20,19 @@ public class CargoServiceImpl implements CargoService{
     public List<Cargo> findAllCargos() {
         return cargoRepository.findAll();
     }
+
+    @Override
+    public void saveCargo(Cargo cargo) {
+        cargoRepository.save(cargo);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        cargoRepository.deleteById(id);
+    }
+
+    @Override
+    public Cargo findById(Integer id) {
+        return cargoRepository.findById(id).orElse(null);
+    }
 }

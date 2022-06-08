@@ -5,9 +5,10 @@ import com.example.demo.service.CargoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -34,4 +35,42 @@ public class CargoController {
         return "cargos";
     }
 
+    @ModelAttribute("cargo")
+    public Cargo getEmptyCargo(){
+        return new Cargo();
+    }
+
+    @GetMapping("/addCargo")
+    public String getPageSaveNewCargo(){
+        return "/addCargo";
+    }
+
+    @PostMapping("/addCargo")
+    public String addNewCargo(@Valid Cargo cargo, Errors errors){
+        if (errors.hasErrors()){
+            return "/addCargo";
+        } else {
+            cargoService.saveCargo(cargo);
+            return "redirect:/cargos/all";
+        }
+    }
+
+    @GetMapping("/cargoDelete/{id}")
+    public String deleteCargoById(@PathVariable("id") Integer id){
+        cargoService.deleteById(id);
+        return "redirect:/cargos/all";
+    }
+
+    @GetMapping("/editCargo/{id}")
+    public String getEditCargoPage(@PathVariable("id") Integer id, Model model){
+        Cargo cargoById = cargoService.findById(id);
+        model.addAttribute("cargo", cargoById);
+        return "/editCargo";
+    }
+
+    @PostMapping("/editCargo")
+    public String editCargo (Cargo cargo){
+        cargoService.saveCargo(cargo);
+        return "redirect:/cargos/all";
+    }
 }

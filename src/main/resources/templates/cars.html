@@ -18,7 +18,7 @@
 
 <div class="container p-2">
     <a class="btn btn-success" sec:authorize="hasAnyAuthority('ROLE_DISPATCHER','ROLE_ADMIN')"
-       href="/registerCar" th:utext="#{registerCar}">Register new car</a>
+       href="/registerCar" th:utext="#{addNewCar}">Add new car</a>
 </div>
 
 <div th:unless="${cars == null}" class="container-xxl p-2 text-center">
