@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface TripService {
     List<Trip> findAllTrips ();
+
+    void saveTrip (Trip trip);
 }

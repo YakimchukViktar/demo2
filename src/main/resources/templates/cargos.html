@@ -9,8 +9,10 @@
 </head>
 <body>
 <style>
-    .even{background-color: #FFFACD}
-    .odd{background-color: #7FFFD4}
+    .even{background-color: #FFFACD;
+    align-content: center}
+    .odd{background-color: #7FFFD4;
+    align-content: center}
 
 </style>
 <div th:replace="trips :: navbar"></div>
@@ -34,23 +36,24 @@
             </tr>
 
             <tr th:unless="${cargos == null}" th:each="cargo : ${cargos}" th:class="${cargoStat.even}?'even':'odd'">
-                <td align="center" th:text="${cargo.id}"></td>
-                <td align="center" th:text="${cargo.invoiceNumber}"></td>
-                <td align="center" th:text="${cargo.name}"></td>
-                <td align="center" th:text="${cargo.price}"></td>
-                <td align="center" th:text="${cargo.insuranceNumber}"></td>
-                <td> <a th:href="@{/editCargo/{id}(id=${cargo.id})}" th:utext="#{edit}">Edit</a></td>
-                <td> <a th:href="@{/cargoDelete/{id}(id=${cargo.id})}" th:utext="#{delete}">Delete</a></td>
+                <td th:text="${cargo.id}"></td>
+                <td th:text="${cargo.invoiceNumber}"></td>
+                <td th:text="${cargo.name}"></td>
+                <td th:text="${cargo.price}"></td>
+                <td th:text="${cargo.insuranceNumber}"></td>
+                <td> <a th:href="@{/editCargo/{id}(id=${cargo.id})}" th:utext="#{edit}"></a></td>
+                <td> <a th:href="@{/cargoDelete/{id}(id=${cargo.id})}" th:utext="#{delete}"></a></td>
             </tr>
 
-            <tr th:if="${cargo == null}" class="even">
-                <td align="center" th:text="${cargo.id}"></td>
-                <td align="center" th:text="${cargo.invoiceNumber}"></td>
-                <td align="center" th:text="${cargo.name}"></td>
-                <td align="center" th:text="${cargo.price}"></td>
-                <td align="center" th:text="${cargo.insuranceNumber}"></td>
+            <tr th:unless="${cargo == null}" class="even">
+                <td th:text="${cargo.id}"></td>
+                <td th:text="${cargo.invoiceNumber}"></td>
+                <td th:text="${cargo.name}"></td>
+                <td th:text="${cargo.price}"></td>
+                <td th:text="${cargo.insuranceNumber}"></td>
+                <td> <a th:href="@{/editCargo/{id}(id=${cargo.id})}" th:utext="#{edit}"></a></td>
+                <td> <a th:href="@{/cargoDelete/{id}(id=${cargo.id})}" th:utext="#{delete}"></a></td>
             </tr>
-
         </table>
     </div>
 </div>

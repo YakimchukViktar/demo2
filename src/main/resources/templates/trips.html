@@ -70,6 +70,10 @@
     <p th:utext="#{programname}">Program for cargo transportation management</p>
 </div>
 
+<div class="container p-2">
+    <a class="btn btn-success" sec:authorize="hasAnyAuthority('ROLE_DISPATCHER','ROLE_ADMIN')"
+       href="/registerTrip" th:utext="#{addNewTrip}">Add new trip</a>
+</div>
 
 <div class="container-xxl p-2 text-center">
     <div class="row row-cols-auto justify-content-md-center">

@@ -47,7 +47,10 @@ public class TripController {
             allTrips = tripService.findAllTrips();
         } else if (role == Role.ROLE_DRIVER) {
             allTrips = tripService.findAllTrips().stream().filter(trip ->
-                    trip.getIdDriver().getId() == driverByUsername.getId()).collect(Collectors.toList());
+            {
+                assert driverByUsername != null;
+                return trip.getIdDriver().getId() == driverByUsername.getId();
+            }).collect(Collectors.toList());
         }
         model.addAttribute("trips", allTrips);
         return "trips";

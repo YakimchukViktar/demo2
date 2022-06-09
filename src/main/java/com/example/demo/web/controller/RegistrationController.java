@@ -1,12 +1,10 @@
 package com.example.demo.web.controller;
 
-import com.example.demo.dao.model.Car;
-import com.example.demo.dao.model.Dispatcher;
-import com.example.demo.dao.model.Driver;
-import com.example.demo.dao.model.Role;
+import com.example.demo.dao.model.*;
 import com.example.demo.service.CarService;
 import com.example.demo.service.DispatcherService;
 import com.example.demo.service.DriverService;
+import com.example.demo.service.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
@@ -23,12 +21,14 @@ public class RegistrationController {
     private final DispatcherService dispatcherService;
     private final DriverService driverService;
     private final CarService carService;
+    private final TripService tripService;
 
     @Autowired
-    public RegistrationController(DispatcherService dispatcherService, DriverService driverService, CarService carService) {
+    public RegistrationController(DispatcherService dispatcherService, DriverService driverService, CarService carService, TripService tripService) {
         this.dispatcherService = dispatcherService;
         this.driverService = driverService;
         this.carService = carService;
+        this.tripService = tripService;
     }
 
 
@@ -92,5 +92,25 @@ public class RegistrationController {
             carService.save(car);
             return "redirect:/cars/all";
         }
+    }
+
+    @ModelAttribute("trip")
+    public Trip getEmptyTrip (){
+        return new Trip();
+    }
+
+    @GetMapping("/registerTrip")
+    public String getRegisterTripPage (){
+        return "/registerTrip";
+    }
+
+    @PostMapping("addNewTrip")
+    public String registerTrip (@Valid Trip trip, Errors errors){
+        if (errors.hasErrors())
+            return "/registerTrip";
+        else {
+            tripService.saveTrip(trip);
+        }
+        return "redirect:/trips/all";
     }
 }

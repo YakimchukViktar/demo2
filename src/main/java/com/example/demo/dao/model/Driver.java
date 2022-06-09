@@ -29,11 +29,11 @@ public class Driver extends BaseEntity{
     private String first_name;
 
     @Column(name = "is_in_trip", nullable = false)
-//    @Pattern (regexp = "^[0-1]$", message = "errors.user.isInTrip")
+    @Pattern (regexp = "^[0-1]$", message = "errors.user.isInTrip")
     private int isInTrip;
 
     @Column(name = "is_active", nullable = false)
-//    @Pattern (regexp = "^[0-1]$", message = "errors.user.isInTrip")
+    @Pattern (regexp = "^[0-1]$", message = "errors.user.isInTrip")
     private int isActive;
 
     @Column(unique = true, nullable = false)
