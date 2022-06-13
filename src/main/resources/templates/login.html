@@ -33,6 +33,7 @@ button {
   border: none;
   cursor: pointer;
   width: 100%;
+
 }
 
 /* Add a hover effect for buttons */
@@ -57,6 +58,24 @@ img.avatar {
 position:absolute; top:29px; right:5px;
 border: 1px ;
 }
+
+        .errorLogin {
+            text-align: center;
+            margin: 5px 0 0 5px;
+            -webkit-animation: blink5 2s linear infinite;
+            animation: blink 2s linear infinite;
+        }
+        @-webkit-keyframes blink {
+            0% { color: darkred; }
+            50% { color: lightcoral; }
+            100% { color: darkred; }
+        }
+        @keyframes blink {
+            0% { color: darkred; }
+            50% { color: lightcoral; }
+            100% { color: darkred; }
+        }
+
     </style>
 </head>
 <body>
@@ -74,16 +93,18 @@ border: 1px ;
     </div>
 
     <div class="container">
+
+        <div class="errorLogin" th:if="${param.error}" th:utext="#{error.password}"></div>
+
         <label for="uname" th:utext="#{loginforlogin}"><b>Login</b></label>
-        <input type="text" placeholder="Enter Username" name="user" id="uname" required>
+        <input type="text" name="user" id="uname" required th:placeholder="${#locale.toString() == 'en_EN'}?
+         'Enter username' : 'Введите логин'">
 
         <label for="psw" th:utext="#{passwordforlogin}"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="pass" id="psw" required>
+        <input type="password"  name="pass" id="psw" required th:placeholder="${#locale.toString() == 'en_EN'}?
+         'Enter password' : 'Введите пароль'">
 
-        <button type="submit">Login</button>
-        <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-        </label>
+        <button type="submit" th:utext="#{login}">Login</button>
     </div>
 
 </form>
