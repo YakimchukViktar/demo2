@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -35,5 +37,19 @@ public class StatusCarController {
         StatusCar statusCarById = statusCarService.findStatusCarById(id);
         model.addAttribute("carWithStatus", statusCarById);
         return "cars";
+    }
+
+    @GetMapping("/editStatusCar/{id}")
+    public String getEditStatusCarPage (@PathVariable("id") Integer id, Model model){
+        System.out.println(id);
+        StatusCar statusCar = statusCarService.findStatusCarById(id);
+        model.addAttribute("statusCar", statusCar);
+        return "editStatusCar";
+    }
+
+    @PostMapping("/changeStatusCar")
+    public String editStatusCar(StatusCar statusCar){
+        statusCarService.save(statusCar);
+        return "redirect:/statusCar/all";
     }
 }

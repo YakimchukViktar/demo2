@@ -27,5 +27,10 @@ private final StatusCarRepository statusCarRepository;
         return statusCarRepository.findStatusCarById(id);
     }
 
+    @Override
+    public void save(StatusCar statusCar) {
+        statusCarRepository.save(statusCar);
+    }
+
 
 }

@@ -9,8 +9,8 @@
 </head>
 <body>
 <style>
-    .even{background-color: #FFFACD}
-    .odd{background-color: #7FFFD4}
+    .even {background-color: #FFFACD}
+    .odd {background-color: #7FFFD4}
 </style>
 
 <div th:replace="trips :: navbar"></div>
@@ -22,16 +22,16 @@
             <tr>
                 <th>Id</th>
                 <th th:utext="#{idStatus}">Car status</th>
+                <th th:utext="#{edit}">Edit</th>
             </tr>
 
             <tr th:each="status : ${statusesCars}" th:class="${statusStat.even}?'even':'odd'">
                 <td align="center" th:text="${status.id}"></td>
                 <td align="center" th:text="${status.status}"></td>
+                <td><a th:href="@{/editStatusCar/{id}(id=${status.id})}" th:utext="#{edit}"></a></td>
             </tr>
         </table>
     </div>
 </div>
-
-
 </body>
 </html>

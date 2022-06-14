@@ -9,10 +9,15 @@
 </head>
 <body>
 <style>
-    .even{background-color: #FFFACD;
-    align-content: center}
-    .odd{background-color: #7FFFD4;
-    align-content: center}
+    .even {
+        background-color: #FFFACD;
+        align-content: center
+    }
+
+    .odd {
+        background-color: #7FFFD4;
+        align-content: center
+    }
 
 </style>
 <div th:replace="trips :: navbar"></div>
@@ -41,8 +46,8 @@
                 <td th:text="${cargo.name}"></td>
                 <td th:text="${cargo.price}"></td>
                 <td th:text="${cargo.insuranceNumber}"></td>
-                <td> <a th:href="@{/editCargo/{id}(id=${cargo.id})}" th:utext="#{edit}"></a></td>
-                <td> <a th:href="@{/cargoDelete/{id}(id=${cargo.id})}" th:utext="#{delete}"></a></td>
+                <td><a th:href="@{/editCargo/{id}(id=${cargo.id})}" th:utext="#{edit}"></a></td>
+                <td><a th:href="@{/cargoDelete/{id}(id=${cargo.id})}" th:utext="#{delete}"></a></td>
             </tr>
 
             <tr th:unless="${cargo == null}" class="even">
@@ -51,12 +56,11 @@
                 <td th:text="${cargo.name}"></td>
                 <td th:text="${cargo.price}"></td>
                 <td th:text="${cargo.insuranceNumber}"></td>
-                <td> <a th:href="@{/editCargo/{id}(id=${cargo.id})}" th:utext="#{edit}"></a></td>
-                <td> <a th:href="@{/cargoDelete/{id}(id=${cargo.id})}" th:utext="#{delete}"></a></td>
+                <td><a th:href="@{/editCargo/{id}(id=${cargo.id})}" th:utext="#{edit}"></a></td>
+                <td><a th:href="@{/cargoDelete/{id}(id=${cargo.id})}" th:utext="#{delete}"></a></td>
             </tr>
         </table>
     </div>
 </div>
-
 </body>
 </html>

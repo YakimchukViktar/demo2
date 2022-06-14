@@ -23,7 +23,7 @@ public class StatusCar extends BaseEntity {
     @Column(name = "status", length = 45)
     private String status;
 
-    @OneToMany (mappedBy = "idStatus")
+    @OneToMany(mappedBy = "idStatus")
     private List<Car> cars;
 
     @Override

@@ -31,6 +31,8 @@
                 <th th:utext="#{second_name}">Second name</th>
                 <th th:utext="#{isInTrip}">Is in trip?</th>
                 <th th:utext="#{isActive}">Is active?</th>
+                <th th:utext="#{edit}">Edit</th>
+                <th th:utext="#{delete}">Delete</th>
             </tr>
 
             <tr th:each="driver : ${drivers}" th:class="${driverStat.even}?'even':'odd'">
@@ -40,11 +42,11 @@
                 <td align="center" th:text="${driver.second_name}"></td>
                 <td align="center" th:text="${driver.isInTrip}"></td>
                 <td align="center" th:text="${driver.isActive}"></td>
+                <td> <a th:href="@{/editDriver/{id}(id=${driver.id})}" th:utext="#{edit}">Edit</a></td>
+                <td> <a th:href="@{/driverDelete/{id}(id=${driver.id})}" th:utext="#{delete}">Delete</a></td>
             </tr>
         </table>
     </div>
 </div>
-
-
 </body>
 </html>

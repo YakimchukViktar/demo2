@@ -9,4 +9,7 @@ public interface DriverService extends UserDetailsService {
     List<Driver> findAllDrivers();
     Driver findDriverByUsername (String username);
     void save (Driver driver);
+    void deleteById(Integer id);
+    Driver findDriverById (Integer id);
+
 }

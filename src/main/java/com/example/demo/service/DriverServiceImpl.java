@@ -43,11 +43,21 @@ public class DriverServiceImpl implements DriverService{
     }
 
     @Override
+    public void deleteById(Integer id) {
+        driverRepository.deleteById(id);
+    }
+
+    @Override
+    public Driver findDriverById(Integer id) {
+        return driverRepository.findDriverById(id);
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Driver driver = findDriverByUsername(username);
         Set<Role> roles = new HashSet<>();
         if (driver == null){
-            throw new UsernameNotFoundException("dispatcher with " + username + " doesn't exist");
+            throw new UsernameNotFoundException("driver with " + username + " doesn't exist");
         } else System.out.println("Success");
         roles.add(driver.getRole());
         return new User(username, driver.getPassword(), roles);

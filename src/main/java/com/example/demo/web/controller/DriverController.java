@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -25,4 +27,23 @@ public class DriverController {
         model.addAttribute("drivers", allDrivers);
         return "drivers";
     }
+
+    @GetMapping("/driverDelete/{id}")
+    public String deleteDriverById (@PathVariable("id") Integer id){
+        driverService.deleteById(id);
+        return "redirect:/drivers/all";
+    }
+
+   @GetMapping("/editDriver/{id}")
+    public String getEditDriverPage (@PathVariable ("id") Integer id, Model model){
+       Driver driver = driverService.findDriverById(id);
+       model.addAttribute("driver", driver);
+       return "/editDriver";
+   }
+
+   @PostMapping("/editDriver")
+    public String editDriver(Driver driver){
+        driverService.save(driver);
+        return "redirect:/drivers/all";
+   }
 }

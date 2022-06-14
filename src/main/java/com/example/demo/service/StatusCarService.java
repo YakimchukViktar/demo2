@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface StatusCarService {
     List<StatusCar> findAllStatuses ();
     StatusCar findStatusCarById (Integer id);
+
+    void save (StatusCar statusCar);
 }

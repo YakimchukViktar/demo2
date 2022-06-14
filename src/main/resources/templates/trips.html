@@ -10,15 +10,17 @@
 </head>
 <body>
 <style>
-    .even{background-color: #FFFACD}
-    .odd{background-color: #7FFFD4}
+
+    .even {background-color: #FFFACD}
+    .odd {background-color: #7FFFD4}
 
 </style>
 
-<nav th:fragment="navbar"  class="navbar navbar-expand-lg navbar-light bg-light">
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid ">
         <a class="navbar-brand" href="/login" sec:authorize="!isAuthenticated()" th:utext="#{enter}">Enter</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -52,6 +54,7 @@
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
                 </li>-->
+
             </ul>
         </div>
         <form>
@@ -62,7 +65,6 @@
             <button class="btn btn-danger" th:utext="#{exit}">Exit</button>
         </form>
     </div>
-
 </nav>
 
 <div th:fragment="header" class="container-xxl p-3 pt-1 pb-1 bg-primary text-white text-center">
@@ -114,7 +116,5 @@
         </table>
     </div>
 </div>
-
-
 </body>
 </html>

@@ -17,7 +17,7 @@
 <form th:action="@{/editCar}" method="post" th:object="${car}">
     <div class="container mt-5">
         <div class="ml-5 form-group row mt-2">
-            <label class="col-sm-4 col-form-label" for="brand" th:utext="#{id}">Id</label>
+            <label class="col-sm-4 col-form-label" for="id" th:utext="#{id}">Id</label>
             <div class="col-sm-5">
                 <input readonly type="text" class="form-control" th:field="*{id}" id="id">
                 <div class="error">
