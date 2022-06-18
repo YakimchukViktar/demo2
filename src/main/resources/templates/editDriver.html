@@ -14,7 +14,33 @@
 
 <form th:action="@{/editDriver}" method="post" th:object="${driver}">
     <div class="container mt-5">
-
+        <div class="ml-5 form-group row mt-2">
+            <label class="col-sm-4 col-form-label" for="id" th:utext="#{id}">Id</label>
+            <div class="col-sm-5">
+                <input readonly type="text" class="form-control" th:field="*{id}" id="id">
+                <div class="error">
+                    <p th:each="err : ${#fields.errors('id')}" class="alert-danger" th:text="#{${err}}"></p>
+                </div>
+            </div>
+        </div>
+        <div class="ml-5 form-group row">
+            <label class="col-sm-4 col-form-label" for="username" th:utext="#{login}">Login</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" th:field="*{username}" id="username">
+                <div class="error">
+                    <p th:each="err : ${#fields.errors('username')}" class="alert-danger" th:text="#{${err}}"></p>
+                </div>
+            </div>
+        </div>
+        <div class="ml-5 form-group row mt-2">
+            <label class="col-sm-4 col-form-label" for="password" th:utext="#{password}">Password</label>
+            <div class="col-sm-5">
+                <input required type="password" class="form-control" th:field="*{password}" id="password">
+                <div class="error">
+                    <p th:each="err : ${#fields.errors('password')}" class="alert-danger" th:text="#{${err}}"></p>
+                </div>
+            </div>
+        </div>
         <div class="ml-5 form-group row mt-2">
             <label class="col-sm-4 col-form-label" for="first_name" th:utext="#{name}">Name</label>
             <div class="col-sm-5">

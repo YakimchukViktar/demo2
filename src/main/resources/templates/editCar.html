@@ -37,7 +37,7 @@
         <div class="ml-5 form-group row mt-2">
             <label class="col-sm-4 col-form-label" for="mileage" th:utext="#{mileage}">Mileage</label>
             <div class="col-sm-5">
-                <input required type="text" class="form-control" th:field="*{mileage}" id="mileage">
+                <input required type="number" class="form-control" th:field="*{mileage}" id="mileage">
                 <div class="error">
                     <p th:each="err : ${#fields.errors('mileage')}" class="alert-danger" th:text="#{${err}}"></p>
                 </div>
@@ -55,7 +55,7 @@
         <div class="ml-5 form-group row mt-2">
             <label class="col-sm-4 col-form-label" for="idStatus" th:utext="#{idStatus}">Id status</label>
             <div class="col-sm-5">
-                <input required type="text" class="form-control" th:field="*{idStatus}" id="idStatus">
+                <input required type="number" min="1" max="3" class="form-control" th:field="*{idStatus}" id="idStatus">
                 <div class="error">
                     <p th:each="err : ${#fields.errors('idStatus')}" class="alert-danger" th:text="#{${err}}"></p>
                 </div>
@@ -68,7 +68,5 @@
     </form>
     </div>
 </form>
-
-
 </body>
 </html>
