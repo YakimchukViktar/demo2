@@ -47,6 +47,11 @@ private final BCryptPasswordEncoder bCryptPasswordEncoder;
     }
 
     @Override
+    public Dispatcher findDispatcherById(Integer id) {
+        return dispatcherRepository.findDispatcherById(id);
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         final Dispatcher dispatcher = findDispatcherByUsername(username);
         Set<Role> roles = new HashSet<>();

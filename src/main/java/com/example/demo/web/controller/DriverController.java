@@ -1,6 +1,7 @@
 package com.example.demo.web.controller;
 
 import com.example.demo.dao.model.Driver;
+import com.example.demo.dao.model.Role;
 import com.example.demo.service.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,6 +44,7 @@ public class DriverController {
 
    @PostMapping("/editDriver")
     public String editDriver(Driver driver){
+        driver.setRole(Role.ROLE_DRIVER);
         driverService.save(driver);
         return "redirect:/drivers/all";
    }
