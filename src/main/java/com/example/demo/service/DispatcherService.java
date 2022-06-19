@@ -9,4 +9,5 @@ public interface DispatcherService extends UserDetailsService {
     List<Dispatcher> findAllDispatchers();
     Dispatcher findDispatcherByUsername (String username);
     void save (Dispatcher dispatcher);
+    void deleteById(Integer id);
 }

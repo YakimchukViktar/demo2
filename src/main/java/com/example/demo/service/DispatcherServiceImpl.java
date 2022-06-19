@@ -42,6 +42,11 @@ private final BCryptPasswordEncoder bCryptPasswordEncoder;
     }
 
     @Override
+    public void deleteById(Integer id) {
+        dispatcherRepository.deleteById(id);
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         final Dispatcher dispatcher = findDispatcherByUsername(username);
         Set<Role> roles = new HashSet<>();

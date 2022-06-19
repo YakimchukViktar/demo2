@@ -27,6 +27,8 @@
                 <th th:utext="#{first_name}">First name</th>
                 <th th:utext="#{second_name}">Second name</th>
                 <th th:utext="#{last_name}">Last name</th>
+                <th th:utext="#{edit}">Edit</th>
+                <th th:utext="#{delete}">Delete</th>
             </tr>
 
             <tr th:each="dispatcher : ${dispatchers}" th:class="${dispatcherStat.even}?'even':'odd'">
@@ -34,6 +36,8 @@
                 <td align="center" th:text="${dispatcher.first_name}"></td>
                 <td align="center" th:text="${dispatcher.second_name}"></td>
                 <td align="center" th:text="${dispatcher.last_name}"></td>
+                <td> <a th:href="@{/editDispatcher/{id}(id=${dispatcher.id})}" th:utext="#{edit}">Edit</a></td>
+                <td> <a th:href="@{/deleteDispatcher/{id}(id=${dispatcher.id})}" th:utext="#{delete}">Delete</a></td>
             </tr>
         </table>
     </div>

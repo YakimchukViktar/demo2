@@ -49,7 +49,7 @@ public class RegistrationController {
         } else {
             dispatcher.setRole(Role.ROLE_DISPATCHER);
             dispatcherService.save(dispatcher);
-            return "/login";
+            return "redirect:/dispatchers/all";
         }
     }
 
@@ -70,7 +70,7 @@ public class RegistrationController {
         } else {
             driver.setRole(Role.ROLE_DRIVER);
             driverService.save(driver);
-            return "/login";
+            return "redirect:/drivers/all";
         }
     }
 

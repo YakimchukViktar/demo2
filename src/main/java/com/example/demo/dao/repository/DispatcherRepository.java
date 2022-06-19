@@ -10,4 +10,6 @@ import java.util.List;
 public interface DispatcherRepository extends CrudRepository<Dispatcher,Integer> {
    List<Dispatcher> findAll();
    Dispatcher findDispatcherByUsername (String username);
+
+   void deleteById(Integer id);
 }

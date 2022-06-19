@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -23,5 +24,11 @@ public class DispatcherController {
         List<Dispatcher> dispatchers = dispatcherService.findAllDispatchers();
         model.addAttribute("dispatchers",dispatchers);
         return "dispatchers";
+    }
+
+    @GetMapping("/deleteDispatcher/{id}")
+    public String deleteDispatcherById (@PathVariable("id") Integer id){
+        dispatcherService.deleteById(id);
+        return "redirect:/dispatchers/all";
     }
 }
