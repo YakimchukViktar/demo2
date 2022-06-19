@@ -107,7 +107,7 @@ public class RegistrationController {
     @PostMapping("addNewTrip")
     public String registerTrip (@Valid Trip trip, Errors errors){
         if (errors.hasErrors())
-            return "/registerTrip";
+            return "redirect:/registerTrip";
         else {
             tripService.saveTrip(trip);
         }

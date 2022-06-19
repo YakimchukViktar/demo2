@@ -11,10 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Controller
@@ -49,10 +51,18 @@ public class TripController {
             allTrips = tripService.findAllTrips().stream().filter(trip ->
             {
                 assert driverByUsername != null;
-                return trip.getIdDriver().getId() == driverByUsername.getId();
+                return Objects.equals(trip.getIdDriver().getId(), driverByUsername.getId());
             }).collect(Collectors.toList());
         }
         model.addAttribute("trips", allTrips);
         return "trips";
     }
+
+    @GetMapping("/deleteTrip/{id}")
+    public String deleteTrip(@PathVariable("id") Integer id){
+        tripService.deleteById(id);
+        return "redirect:/trips/all";
+    }
+
+
 }

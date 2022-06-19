@@ -43,18 +43,6 @@
                 <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_DISPATCHER','ROLE_ADMIN')">
                     <a class="nav-link" href="/statusCar/all" th:utext="#{carStatuses}">Car statuses</a>
                 </li>
-
-                <!--<li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown link
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li>-->
-
             </ul>
         </div>
         <form>
@@ -94,6 +82,8 @@
                 <th th:utext="#{idCargo}">Cargo</th>
                 <th th:utext="#{endDate}">End date</th>
                 <th th:utext="#{endTime}">End time</th>
+                <th th:utext="#{edit}">Edit</th>
+                <th sec:authorize="hasAnyAuthority('ROLE_DISPATCHER', 'ROLE_ADMIN')" th:utext="#{delete}">Delete</th>
             </tr>
 
             <tr th:unless="${trips == null}" th:each="trip : ${trips}" th:class="${tripStat.even}?'even':'odd'">
@@ -108,10 +98,12 @@
                 <td align="center" th:text="${trip.idDriver}"></td>
                 <td align="center" th:text="${trip.idCar}"></td>
                 <td align="center" sec:authorize="hasAnyAuthority('ROLE_DISPATCHER', 'ROLE_ADMIN')">
-                    <a th:href="@{/cargo(id=${trip.IdCargo.getId})}" th:text="${trip.idCargo}"> </a></td>
+                    <a th:href="@{/cargo(id=${trip.idCargo.getId()})}" th:text="${trip.idCargo}"> </a></td>
                 <td align="center" sec:authorize="hasAnyAuthority('ROLE_DRIVER')" th:text="${trip.idCargo}"></td>
                 <td align="center" th:text="${trip.endDate}"></td>
                 <td align="center" th:text="${trip.endTime}"></td>
+                <td> <a th:href="@{/editTrip/{id}(id=${trip.id})}" th:utext="#{edit}">Edit</a></td>
+                <td sec:authorize="hasAnyAuthority('ROLE_DISPATCHER', 'ROLE_ADMIN')"> <a th:href="@{/deleteTrip/{id}(id=${trip.id})}" th:utext="#{delete}">Delete</a></td>
             </tr>
         </table>
     </div>

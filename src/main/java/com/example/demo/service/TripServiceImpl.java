@@ -25,4 +25,9 @@ public class TripServiceImpl implements TripService{
     public void saveTrip(Trip trip) {
         tripRepository.save(trip);
     }
+
+    @Override
+    public void deleteById(Integer id) {
+        tripRepository.deleteById(id);
+    }
 }

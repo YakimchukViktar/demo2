@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class CargoController {
@@ -28,9 +29,9 @@ public class CargoController {
     }
 
     @GetMapping("/cargo")
-    public String getCargoByIdCargo(@RequestParam("id") int id, Model model){
+    public String getCargoByIdCargo(@RequestParam("id") Integer id, Model model){
         List<Cargo> allCargos = cargoService.findAllCargos();
-        Cargo cargo = allCargos.stream().filter(c -> c.getId() == id).findFirst().orElse(null);
+        Cargo cargo = allCargos.stream().filter(c -> Objects.equals(c.getId(), id)).findFirst().orElse(null);
         model.addAttribute("cargo", cargo);
         return "cargos";
     }
