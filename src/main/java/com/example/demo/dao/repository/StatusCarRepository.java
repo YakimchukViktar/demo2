@@ -11,5 +11,6 @@ import java.util.Optional;
 @Repository
 public interface StatusCarRepository extends CrudRepository<StatusCar, Integer> {
     List<StatusCar> findAll();
-    StatusCar findStatusCarById (Integer id);
+
+    StatusCar findStatusCarById(Integer id);
 }

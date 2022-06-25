@@ -10,4 +10,6 @@ public interface TripService {
     void saveTrip (Trip trip);
 
     void deleteById(Integer id);
+
+    Trip findTripById (Integer id);
 }

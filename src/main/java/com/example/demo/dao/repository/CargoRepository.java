@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CargoRepository extends CrudRepository <Cargo, Integer> {
-    List<Cargo> findAll ();
+public interface CargoRepository extends CrudRepository<Cargo, Integer> {
+    List<Cargo> findAll();
 
     void deleteById(Integer id);
 }

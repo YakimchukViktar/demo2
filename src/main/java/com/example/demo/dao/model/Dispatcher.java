@@ -13,19 +13,19 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Dispatcher extends BaseEntity{
-    @Column (name = "last_name", nullable = false, length = 45)
+public class Dispatcher extends BaseEntity {
+    @Column(name = "last_name", nullable = false, length = 45)
     @Size(min = 2, max = 20, message = "errors.user.lastName")
     private String last_name;
 
-    @Column (name = "second_name", length = 45, nullable = true)
+    @Column(name = "second_name", length = 45, nullable = true)
     private String second_name;
 
-    @Column (name = "first_name", nullable = false, length = 45)
+    @Column(name = "first_name", nullable = false, length = 45)
     private String first_name;
 
-    @OneToMany (mappedBy = "idDispatcher")
-    private List <Trip> trips;
+    @OneToMany(mappedBy = "idDispatcher")
+    private List<Trip> trips;
 
     @Override
     public String toString() {

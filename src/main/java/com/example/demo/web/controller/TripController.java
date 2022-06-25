@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.security.Principal;
 import java.util.ArrayList;
@@ -25,14 +26,12 @@ public class TripController {
     private final DriverService driverService;
     private final DispatcherService dispatcherService;
 
-
     @Autowired
     public TripController(TripService tripService, DriverService driverService, DispatcherService dispatcherService) {
         this.tripService = tripService;
         this.driverService = driverService;
         this.dispatcherService = dispatcherService;
     }
-
 
     @GetMapping ("/trips/all")
     public String getAllTrips(Model model, Principal principal) {
@@ -65,4 +64,16 @@ public class TripController {
     }
 
 
+    @GetMapping("/editTrip/{id}")
+    public String getEditTripPage(@PathVariable("id") Integer id, Model model){
+        Trip trip = tripService.findTripById(id);
+        model.addAttribute("trip", trip);
+        return "/editTrip";
+    }
+
+    @PostMapping("/editTrip")
+    public String editTripById(Trip trip){
+        tripService.saveTrip(trip);
+        return "redirect:/trips/all";
+    }
 }

@@ -7,8 +7,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface TripRepository extends CrudRepository <Trip, Integer> {
-    List<Trip> findAll ();
+public interface TripRepository extends CrudRepository<Trip, Integer> {
+    List<Trip> findAll();
 
     void deleteById(Integer id);
+
+    Trip findTripById(Integer id);
 }

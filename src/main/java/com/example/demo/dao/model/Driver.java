@@ -16,7 +16,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Driver extends BaseEntity{
+public class Driver extends BaseEntity {
 
     @Column(name = "last_name", length = 45, nullable = false)
     @Size(min = 0, max = 45, message = "errors.user.lastName")
@@ -43,11 +43,11 @@ public class Driver extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany (mappedBy = "idDriver")
+    @OneToMany(mappedBy = "idDriver")
     private List<Trip> trips;
 
     @Override
     public String toString() {
-        return last_name + " "+first_name;
+        return last_name + " " + first_name;
     }
 }

@@ -7,9 +7,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface DispatcherRepository extends CrudRepository<Dispatcher,Integer> {
+public interface DispatcherRepository extends CrudRepository<Dispatcher, Integer> {
    List<Dispatcher> findAll();
-   Dispatcher findDispatcherByUsername (String username);
+
+   Dispatcher findDispatcherByUsername(String username);
 
    void deleteById(Integer id);
 

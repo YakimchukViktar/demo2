@@ -20,7 +20,7 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Trip extends BaseEntity{
+public class Trip extends BaseEntity {
 
     @Column(name = "start_point", length = 45)
     private String startPoint;
@@ -55,7 +55,7 @@ public class Trip extends BaseEntity{
     private Car idCar;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_cargo", nullable = false)
+    @JoinColumn(name = "id_cargo")
     private Cargo idCargo;
 
     @Column(name = "end_date")

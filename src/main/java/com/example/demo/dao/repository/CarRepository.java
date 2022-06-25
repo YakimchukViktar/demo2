@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CarRepository extends CrudRepository <Car, Integer> {
-    List <Car> findAll ();
+public interface CarRepository extends CrudRepository<Car, Integer> {
+    List<Car> findAll();
 
     void deleteById(Integer id);
 }

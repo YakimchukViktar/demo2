@@ -32,11 +32,11 @@ public class Car extends BaseEntity{
     @JoinColumn(name = "id_status")
     private StatusCar idStatus;
 
-    @OneToMany (mappedBy = "idCar")
+    @OneToMany(mappedBy = "idCar")
     private List<Trip> trips;
 
     @Override
     public String toString() {
-        return brand + " "+number;
+        return brand + " " + number;
     }
 }

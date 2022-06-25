@@ -30,4 +30,9 @@ public class TripServiceImpl implements TripService{
     public void deleteById(Integer id) {
         tripRepository.deleteById(id);
     }
+
+    @Override
+    public Trip findTripById(Integer id) {
+        return tripRepository.findTripById(id);
+    }
 }
