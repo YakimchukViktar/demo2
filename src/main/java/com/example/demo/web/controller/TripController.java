@@ -76,4 +76,5 @@ public class TripController {
         tripService.saveTrip(trip);
         return "redirect:/trips/all";
     }
+
 }
