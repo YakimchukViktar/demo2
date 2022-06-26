@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CargoServiceImpl implements CargoService{
+public class CargoServiceImpl implements CargoService {
     private final CargoRepository cargoRepository;
 
     @Autowired

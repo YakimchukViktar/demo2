@@ -1,9 +1,6 @@
 package com.example.demo.dao.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
@@ -11,7 +8,7 @@ import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
-@Table (name = "drivers")
+@Table(name = "drivers")
 @Getter
 @Setter
 @AllArgsConstructor

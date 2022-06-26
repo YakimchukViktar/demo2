@@ -1,9 +1,6 @@
 package com.example.demo.dao.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -15,7 +12,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Cargo extends BaseEntity{
+public class Cargo extends BaseEntity {
 
     @Column(name = "invoice_number")
     private Integer invoiceNumber;

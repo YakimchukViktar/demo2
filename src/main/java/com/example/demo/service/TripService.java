@@ -5,11 +5,11 @@ import com.example.demo.dao.model.Trip;
 import java.util.List;
 
 public interface TripService {
-    List<Trip> findAllTrips ();
+    List<Trip> findAllTrips();
 
-    void saveTrip (Trip trip);
+    void saveTrip(Trip trip);
 
     void deleteById(Integer id);
 
-    Trip findTripById (Integer id);
+    Trip findTripById(Integer id);
 }

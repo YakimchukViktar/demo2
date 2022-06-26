@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-public class DriverServiceImpl implements DriverService{
+public class DriverServiceImpl implements DriverService {
 
     private final DriverRepository driverRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -28,7 +28,7 @@ public class DriverServiceImpl implements DriverService{
 
     @Override
     public List<Driver> findAllDrivers() {
-    return driverRepository.findAll();
+        return driverRepository.findAll();
     }
 
     @Override
@@ -56,9 +56,9 @@ public class DriverServiceImpl implements DriverService{
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Driver driver = findDriverByUsername(username);
         Set<Role> roles = new HashSet<>();
-        if (driver == null){
-            throw new UsernameNotFoundException("driver with " + username + " doesn't exist");
-        } else System.out.println("Success");
+        if (driver == null) {
+            throw new UsernameNotFoundException("Driver with " + username + " doesn't exist");
+        } else System.out.println("Driver was successfully found");
         roles.add(driver.getRole());
         return new User(username, driver.getPassword(), roles);
     }

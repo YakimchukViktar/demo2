@@ -33,7 +33,7 @@ public class TripController {
         this.dispatcherService = dispatcherService;
     }
 
-    @GetMapping ("/trips/all")
+    @GetMapping("/trips/all")
     public String getAllTrips(Model model, Principal principal) {
         List<Trip> allTrips = new ArrayList<>();
         Driver driverByUsername = driverService.findDriverByUsername(principal.getName());
@@ -58,21 +58,21 @@ public class TripController {
     }
 
     @GetMapping("/deleteTrip/{id}")
-    public String deleteTrip(@PathVariable("id") Integer id){
+    public String deleteTrip(@PathVariable("id") Integer id) {
         tripService.deleteById(id);
         return "redirect:/trips/all";
     }
 
 
     @GetMapping("/editTrip/{id}")
-    public String getEditTripPage(@PathVariable("id") Integer id, Model model){
+    public String getEditTripPage(@PathVariable("id") Integer id, Model model) {
         Trip trip = tripService.findTripById(id);
         model.addAttribute("trip", trip);
         return "/editTrip";
     }
 
     @PostMapping("/editTrip")
-    public String editTripById(Trip trip){
+    public String editTripById(Trip trip) {
         tripService.saveTrip(trip);
         return "redirect:/trips/all";
     }

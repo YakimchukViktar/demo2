@@ -14,21 +14,21 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-private final DispatcherService dispatcherService;
-private final DriverService driverService;
-private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final DispatcherService dispatcherService;
+    private final DriverService driverService;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-@Autowired
+    @Autowired
     public SecurityConfig(DispatcherService dispatcherService, DriverService driverService, BCryptPasswordEncoder bCryptPasswordEncoder) {
-    this.dispatcherService = dispatcherService;
-    this.driverService = driverService;
-    this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.dispatcherService = dispatcherService;
+        this.driverService = driverService;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers(  "/trips/all").hasAnyAuthority("ROLE_DISPATCHER", "ROLE_ADMIN", "ROLE_DRIVER")
+                .antMatchers("/trips/all").hasAnyAuthority("ROLE_DISPATCHER", "ROLE_ADMIN", "ROLE_DRIVER")
                 .antMatchers("/drivers/**", "/statusCar/all", "/cargos/all",
                         "/cargo", "/cars/**").hasAnyAuthority("ROLE_DISPATCHER", "ROLE_ADMIN")
                 .antMatchers("/dispatchers/**", "/registerDispatcher").hasAnyAuthority("ROLE_ADMIN")
@@ -36,7 +36,7 @@ private final BCryptPasswordEncoder bCryptPasswordEncoder;
                 .formLogin()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/","/**")
+                .antMatchers("/", "/**")
                 .permitAll()
                 .and()
                 .formLogin()
@@ -51,7 +51,7 @@ private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    auth.userDetailsService(dispatcherService).passwordEncoder(bCryptPasswordEncoder);
-    auth.userDetailsService(driverService).passwordEncoder(bCryptPasswordEncoder);
+        auth.userDetailsService(dispatcherService).passwordEncoder(bCryptPasswordEncoder);
+        auth.userDetailsService(driverService).passwordEncoder(bCryptPasswordEncoder);
     }
 }

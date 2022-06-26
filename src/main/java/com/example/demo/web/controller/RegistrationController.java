@@ -33,7 +33,7 @@ public class RegistrationController {
 
 
     @ModelAttribute("dispatcher")
-    public Dispatcher getEmptyDispatcher (){
+    public Dispatcher getEmptyDispatcher() {
         return new Dispatcher();
     }
 
@@ -54,18 +54,18 @@ public class RegistrationController {
     }
 
     @GetMapping("/registerDriver")
-    public String getRegisterDriverPage(){
+    public String getRegisterDriverPage() {
         return "registerDriver";
     }
 
     @ModelAttribute("driver")
-    public Driver getEmptyDriver (){
+    public Driver getEmptyDriver() {
         return new Driver();
     }
 
     @PostMapping("/driverRegister")
-    public String registerDriver(@Valid Driver driver, Errors errors){
-        if (errors.hasErrors()){
+    public String registerDriver(@Valid Driver driver, Errors errors) {
+        if (errors.hasErrors()) {
             return "registerDriver";
         } else {
             driver.setRole(Role.ROLE_DRIVER);
@@ -75,18 +75,18 @@ public class RegistrationController {
     }
 
     @ModelAttribute("car")
-    public Car getEmptyCar(){
+    public Car getEmptyCar() {
         return new Car();
     }
 
     @GetMapping("/registerCar")
-    public String getRegisterCarPage(){
+    public String getRegisterCarPage() {
         return "registerCar";
     }
 
     @PostMapping("/carRegister")
-    public String registerCar(@Valid Car car, Errors errors){
-        if (errors.hasErrors()){
+    public String registerCar(@Valid Car car, Errors errors) {
+        if (errors.hasErrors()) {
             return "registerCar";
         } else {
             carService.save(car);
@@ -95,20 +95,20 @@ public class RegistrationController {
     }
 
     @ModelAttribute("trip")
-    public Trip getEmptyTrip (){
+    public Trip getEmptyTrip() {
         return new Trip();
     }
 
     @GetMapping("/registerTrip")
-    public String getRegisterTripPage (){
+    public String getRegisterTripPage() {
         return "/registerTrip";
     }
 
     @PostMapping("addNewTrip")
-    public String registerTrip (@Valid Trip trip, Errors errors){
-        if (errors.hasErrors())
+    public String registerTrip(@Valid Trip trip, Errors errors) {
+        if (errors.hasErrors()) {
             return "redirect:/registerTrip";
-        else {
+        } else {
             tripService.saveTrip(trip);
         }
         return "redirect:/trips/all";

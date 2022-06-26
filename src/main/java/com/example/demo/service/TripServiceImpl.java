@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class TripServiceImpl implements TripService{
+public class TripServiceImpl implements TripService {
     private final TripRepository tripRepository;
 
     @Autowired

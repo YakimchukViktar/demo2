@@ -22,14 +22,14 @@ public class CargoController {
     }
 
     @GetMapping("/cargos/all")
-    public String getAllCargos(Model model){
+    public String getAllCargos(Model model) {
         List<Cargo> allCargos = cargoService.findAllCargos();
         model.addAttribute("cargos", allCargos);
         return "cargos";
     }
 
     @GetMapping("/cargo")
-    public String getCargoByIdCargo(@RequestParam("id") Integer id, Model model){
+    public String getCargoByIdCargo(@RequestParam("id") Integer id, Model model) {
         List<Cargo> allCargos = cargoService.findAllCargos();
         Cargo cargo = allCargos.stream().filter(c -> Objects.equals(c.getId(), id)).findFirst().orElse(null);
         model.addAttribute("cargo", cargo);
@@ -37,18 +37,18 @@ public class CargoController {
     }
 
     @ModelAttribute("cargo")
-    public Cargo getEmptyCargo(){
+    public Cargo getEmptyCargo() {
         return new Cargo();
     }
 
     @GetMapping("/addCargo")
-    public String getPageSaveNewCargo(){
+    public String getPageSaveNewCargo() {
         return "/addCargo";
     }
 
     @PostMapping("/addCargo")
-    public String addNewCargo(@Valid Cargo cargo, Errors errors){
-        if (errors.hasErrors()){
+    public String addNewCargo(@Valid Cargo cargo, Errors errors) {
+        if (errors.hasErrors()) {
             return "/addCargo";
         } else {
             cargoService.saveCargo(cargo);
@@ -57,20 +57,20 @@ public class CargoController {
     }
 
     @GetMapping("/cargoDelete/{id}")
-    public String deleteCargoById(@PathVariable("id") Integer id){
+    public String deleteCargoById(@PathVariable("id") Integer id) {
         cargoService.deleteById(id);
         return "redirect:/cargos/all";
     }
 
     @GetMapping("/editCargo/{id}")
-    public String getEditCargoPage(@PathVariable("id") Integer id, Model model){
+    public String getEditCargoPage(@PathVariable("id") Integer id, Model model) {
         Cargo cargoById = cargoService.findById(id);
         model.addAttribute("cargo", cargoById);
         return "/editCargo";
     }
 
     @PostMapping("/editCargo")
-    public String editCargo (Cargo cargo){
+    public String editCargo(Cargo cargo) {
         cargoService.saveCargo(cargo);
         return "redirect:/cargos/all";
     }

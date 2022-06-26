@@ -27,11 +27,6 @@ public class Dispatcher extends BaseEntity {
     @OneToMany(mappedBy = "idDispatcher")
     private List<Trip> trips;
 
-    @Override
-    public String toString() {
-        return last_name + " " + first_name;
-    }
-
     @Column(unique = true, nullable = false)
     private String username;
 
@@ -40,4 +35,9 @@ public class Dispatcher extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @Override
+    public String toString() {
+        return last_name + " " + first_name;
+    }
 }

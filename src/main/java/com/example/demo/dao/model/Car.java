@@ -1,12 +1,8 @@
 package com.example.demo.dao.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.List;
 
@@ -16,7 +12,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Car extends BaseEntity{
+public class Car extends BaseEntity {
 
     @Column(name = "brand", nullable = false, length = 45)
     @Size(min = 2, max = 20, message = "errors.user.brand")

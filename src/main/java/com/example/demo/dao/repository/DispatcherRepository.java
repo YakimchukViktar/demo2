@@ -8,11 +8,11 @@ import java.util.List;
 
 @Repository
 public interface DispatcherRepository extends CrudRepository<Dispatcher, Integer> {
-   List<Dispatcher> findAll();
+    List<Dispatcher> findAll();
 
-   Dispatcher findDispatcherByUsername(String username);
+    Dispatcher findDispatcherByUsername(String username);
 
-   void deleteById(Integer id);
+    void deleteById(Integer id);
 
-   Dispatcher findDispatcherById(Integer id);
+    Dispatcher findDispatcherById(Integer id);
 }

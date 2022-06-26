@@ -15,9 +15,9 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-public class DispatcherServiceImpl implements DispatcherService{
-private final DispatcherRepository dispatcherRepository;
-private final BCryptPasswordEncoder bCryptPasswordEncoder;
+public class DispatcherServiceImpl implements DispatcherService {
+    private final DispatcherRepository dispatcherRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     public DispatcherServiceImpl(DispatcherRepository dispatcherRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
@@ -37,8 +37,8 @@ private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public void save(Dispatcher dispatcher) {
-    dispatcher.setPassword(bCryptPasswordEncoder.encode(dispatcher.getPassword()));
-    dispatcherRepository.save(dispatcher);
+        dispatcher.setPassword(bCryptPasswordEncoder.encode(dispatcher.getPassword()));
+        dispatcherRepository.save(dispatcher);
     }
 
     @Override
@@ -55,10 +55,11 @@ private final BCryptPasswordEncoder bCryptPasswordEncoder;
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         final Dispatcher dispatcher = findDispatcherByUsername(username);
         Set<Role> roles = new HashSet<>();
-        if (dispatcher == null)
+        if (dispatcher == null) {
             throw new UsernameNotFoundException("dispatcher with " + username + " doesn't exist");
-        else
-            System.out.println("Success");
+        } else {
+            System.out.println("Dispatcher was successfully found");
+        }
         roles.add(dispatcher.getRole());
         return new User(username, dispatcher.getPassword(), roles);
     }

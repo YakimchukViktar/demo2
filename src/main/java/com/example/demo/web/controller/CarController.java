@@ -1,7 +1,6 @@
 package com.example.demo.web.controller;
 
 import com.example.demo.dao.model.Car;
-import com.example.demo.dao.model.StatusCar;
 import com.example.demo.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class CarController {
@@ -23,10 +21,10 @@ public class CarController {
     }
 
     @GetMapping("/cars/all")
-    public String getAllCars(Model model){
+    public String getAllCars(Model model) {
         List<Car> allCars = carService.findAllCars();
-    model.addAttribute("cars", allCars);
-    return "cars";
+        model.addAttribute("cars", allCars);
+        return "cars";
     }
 
     @GetMapping("/carDelete/{id}")
@@ -43,7 +41,7 @@ public class CarController {
     }
 
     @PostMapping("/editCar")
-    public String updateCar(Car car){
+    public String updateCar(Car car) {
         carService.save(car);
         return "redirect:/cars/all";
     }
