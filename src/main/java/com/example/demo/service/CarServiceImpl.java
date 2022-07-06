@@ -5,7 +5,6 @@ import com.example.demo.dao.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 public class CarServiceImpl implements CarService {
@@ -17,7 +16,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public List<Car> findAllCars() {
+    public Iterable<Car> findAllCars() {
         return carRepository.findAll();
     }
 

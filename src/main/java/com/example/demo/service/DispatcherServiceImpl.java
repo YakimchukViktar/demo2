@@ -11,7 +11,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Service
@@ -26,7 +25,7 @@ public class DispatcherServiceImpl implements DispatcherService {
     }
 
     @Override
-    public List<Dispatcher> findAllDispatchers() {
+    public Iterable<Dispatcher> findAllDispatchers() {
         return dispatcherRepository.findAll();
     }
 

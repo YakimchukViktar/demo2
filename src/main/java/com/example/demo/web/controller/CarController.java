@@ -22,7 +22,7 @@ public class CarController {
 
     @GetMapping("/cars/all")
     public String getAllCars(Model model) {
-        List<Car> allCars = carService.findAllCars();
+        Iterable<Car> allCars = carService.findAllCars();
         model.addAttribute("cars", allCars);
         return "cars";
     }
