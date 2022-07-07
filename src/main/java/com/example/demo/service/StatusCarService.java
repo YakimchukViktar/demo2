@@ -2,10 +2,9 @@ package com.example.demo.service;
 
 import com.example.demo.dao.model.StatusCar;
 
-import java.util.List;
 
 public interface StatusCarService {
-    List<StatusCar> findAllStatuses();
+    Iterable<StatusCar> findAllStatuses();
 
     StatusCar findStatusCarById(Integer id);
 

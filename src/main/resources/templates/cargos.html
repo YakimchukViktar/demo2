@@ -20,8 +20,8 @@
     }
 
 </style>
-<div th:replace="trips :: navbar"></div>
-<div th:insert="trips :: header"></div>
+<div th:replace="blocks/navbar :: navbar"></div>
+<div th:insert="blocks/header :: header"></div>
 
 <div class="container p-2">
     <a class="btn btn-success" href="/addCargo" th:utext="#{addCargo}">Add new cargo</a>

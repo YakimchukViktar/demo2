@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.List;
 
 @Controller
 public class StatusCarController {
@@ -22,7 +21,7 @@ public class StatusCarController {
 
     @GetMapping("/statusCar/all")
     public String getAllStatusesOfCars(Model model) {
-        List<StatusCar> allStatuses = statusCarService.findAllStatuses();
+        Iterable<StatusCar> allStatuses = statusCarService.findAllStatuses();
         model.addAttribute("statusesCars", allStatuses);
         return "statusCar";
     }
@@ -36,7 +35,6 @@ public class StatusCarController {
 
     @GetMapping("/editStatusCar/{id}")
     public String getEditStatusCarPage(@PathVariable("id") Integer id, Model model) {
-        System.out.println(id);
         StatusCar statusCar = statusCarService.findStatusCarById(id);
         model.addAttribute("statusCar", statusCar);
         return "editStatusCar";

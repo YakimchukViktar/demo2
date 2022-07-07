@@ -10,5 +10,4 @@ import java.util.List;
 public interface CargoRepository extends CrudRepository<Cargo, Integer> {
     List<Cargo> findAll();
 
-    void deleteById(Integer id);
 }

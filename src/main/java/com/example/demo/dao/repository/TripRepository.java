@@ -10,7 +10,5 @@ import java.util.List;
 public interface TripRepository extends CrudRepository<Trip, Integer> {
     List<Trip> findAll();
 
-    void deleteById(Integer id);
-
     Trip findTripById(Integer id);
 }

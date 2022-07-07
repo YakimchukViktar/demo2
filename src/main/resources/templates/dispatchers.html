@@ -12,8 +12,8 @@
     .even{background-color: #FFFACD}
     .odd{background-color: #7FFFD4}
 </style>
-<div th:replace="trips :: navbar"></div>
-<div th:insert="trips :: header"></div>
+<div th:replace="blocks/navbar :: navbar"></div>
+<div th:insert="blocks/header :: header"></div>
 
 <div class="container p-2">
     <a class="btn btn-success" href="/registerDispatcher" th:utext="#{registerDispatcher}">Register new dispatcher</a>
