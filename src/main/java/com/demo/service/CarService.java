@@ -2,10 +2,9 @@ package com.demo.service;
 
 import com.demo.dao.model.Car;
 
-import java.util.List;
 
 public interface CarService {
-    List<Car> findAllCars();
+    Iterable<Car> findAllCars();
 
     void save(Car car);
 

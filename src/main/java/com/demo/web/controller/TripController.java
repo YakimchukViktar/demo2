@@ -63,7 +63,6 @@ public class TripController {
         return "redirect:/trips/all";
     }
 
-
     @GetMapping("/editTrip/{id}")
     public String getEditTripPage(@PathVariable("id") Integer id, Model model) {
         Trip trip = tripService.findTripById(id);
@@ -76,4 +75,5 @@ public class TripController {
         tripService.saveTrip(trip);
         return "redirect:/trips/all";
     }
+
 }

@@ -23,7 +23,7 @@ public class DispatcherController {
 
     @GetMapping("/dispatchers/all")
     public String getAllDispatchers(Model model) {
-        List<Dispatcher> dispatchers = dispatcherService.findAllDispatchers();
+        Iterable<Dispatcher> dispatchers = dispatcherService.findAllDispatchers();
         model.addAttribute("dispatchers", dispatchers);
         return "dispatchers";
     }

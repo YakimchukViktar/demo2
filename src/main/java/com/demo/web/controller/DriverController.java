@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.List;
 
 @Controller
 public class DriverController {
@@ -24,7 +23,7 @@ public class DriverController {
 
     @GetMapping("/drivers/all")
     public String getlAllDrivers(Model model) {
-        List<Driver> allDrivers = driverService.findAllDrivers();
+        Iterable<Driver> allDrivers = driverService.findAllDrivers();
         model.addAttribute("drivers", allDrivers);
         return "drivers";
     }

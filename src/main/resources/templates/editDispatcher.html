@@ -9,8 +9,8 @@
 </head>
 <body>
 
-<div th:replace="trips :: navbar"></div>
-<div th:insert="trips :: header"></div>
+<div th:replace="blocks/navbar :: navbar"></div>
+<div th:insert="blocks/header :: header"></div>
 
 <form th:action="@{/editDispatcher}" method="post" th:object="${dispatcher}">
     <div class="container mt-5">
