@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 @Controller
 public class TripController {
@@ -56,6 +58,21 @@ public class TripController {
         model.addAttribute("trips", allTrips);
         return "trips";
     }
+
+
+
+
+    @GetMapping("/trips/{findRequest}")
+    public String getTripsDependOfLastNameOfDriver(@PathVariable("findRequest") String findRequest,Model model) {
+        List <Trip> allTrips = tripService.findAllTrips().stream().filter(trip ->
+                trip.getIdDriver().getLast_name().contains(findRequest)).collect(Collectors.toList());
+        model.addAttribute("trips", allTrips);
+        return "trips";
+    }
+
+
+
+
 
     @GetMapping("/deleteTrip/{id}")
     public String deleteTrip(@PathVariable("id") Integer id) {
