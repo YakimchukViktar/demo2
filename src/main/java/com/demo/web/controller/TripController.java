@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
 import java.util.ArrayList;
@@ -63,10 +64,10 @@ public class TripController {
 
 
     @GetMapping("/trips/{findRequest}")
-    public String getTripsDependOfLastNameOfDriver(@PathVariable("findRequest") String findRequest,Model model) {
-        List <Trip> allTrips = tripService.findAllTrips().stream().filter(trip ->
+    public String getTripsDependOfLastNameOfDriver(@PathVariable ("findRequest") String findRequest, Model model) {
+        List <Trip> allTripsByDriver = tripService.findAllTrips().stream().filter(trip ->
                 trip.getIdDriver().getLast_name().contains(findRequest)).collect(Collectors.toList());
-        model.addAttribute("trips", allTrips);
+        model.addAttribute("trips", allTripsByDriver);
         return "trips";
     }
 

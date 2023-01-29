@@ -57,7 +57,7 @@
                 <td align="center" th:text="${trip.idDriver}"></td>
                 <td align="center" th:text="${trip.idCar}"></td>
                 <td align="center" sec:authorize="hasAnyAuthority('ROLE_DISPATCHER', 'ROLE_ADMIN')">
-                    <a th:href="@{/cargo(id=${trip.idCargo.getId()})}" th:text="${trip.idCargo}"> </a></td>
+                    <a th:href="@{/cargo(id=${trip.idCargo.id})}" th:text="${trip.idCargo}"> </a></td>
                 <td align="center" sec:authorize="hasAnyAuthority('ROLE_DRIVER')" th:text="${trip.idCargo}"></td>
                 <td align="center" th:text="${trip.endDate}"></td>
                 <td align="center" th:text="${trip.endTime}"></td>
@@ -65,6 +65,11 @@
                 <td sec:authorize="hasAnyAuthority('ROLE_DISPATCHER', 'ROLE_ADMIN')"> <a th:href="@{/deleteTrip/{id}(id=${trip.id})}" th:utext="#{delete}">Delete</a></td>
             </tr>
         </table>
+        <form method="get">
+            <input name="findRequest" placeholder="Поиск по фамилии или имени водтеля">
+            <input type="submit">
+
+        </form>
     </div>
 </div>
 </body>
